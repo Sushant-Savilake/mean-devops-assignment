@@ -1,4 +1,4 @@
-name: Build and Push Docker Images
+name: Build Push Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +27,14 @@ jobs:
 
       - name: Push backend image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/mean-backend
+
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/mean-devops-assignment
+            sudo docker-compose pull
+            sudo docker-compose up -d
