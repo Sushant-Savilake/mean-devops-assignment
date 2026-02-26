@@ -131,7 +131,7 @@ Workflow file location:
 Nginx is configured on EC2 to expose the entire application via:
 
 ```
-http://13.48.158.92
+http://13.48.xxx.xxx
 ```
 
 Routing rules:
