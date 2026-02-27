@@ -165,9 +165,8 @@ Nginx listens on **port 80**.
 
 ### **Application UI**
 
-![Application UI](screenshots/page-overview.png)
+![Application UI](screenshots/page-overview-1.png)
 
-![Application UI - 2](screenshots/page-overview_2.png)
 
 ---
 
