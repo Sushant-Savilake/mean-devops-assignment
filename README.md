@@ -182,5 +182,5 @@ Nginx listens on **port 80**.
 ✔ Reverse proxy configuration (Nginx)
 ✔ Automated CI/CD pipeline
 ✔ Registry-based deployment strategy
-..
+....
 
