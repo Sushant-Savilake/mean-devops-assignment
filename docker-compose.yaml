@@ -2,35 +2,36 @@ services:
   mongodb:
     image: mongo
     container_name: mongodb
-    ports:
-      - "27017:27017"
+    restart: always
+    volumes:
+      - mongo-data:/data/db
     networks:
       - mean-network
-    restart: always
 
   backend:
-  image: sushantsavilake/mean-backend
-  container_name: backend
-  restart: always
-  environment:
-    - MONGO_URL=mongodb://mongodb:27017/dd_db
-    - PORT=8080
-  depends_on:
-    - mongodb
-  networks:
-    - mean-network
+    image: sushantsavilake/mean-backend
+    container_name: backend
+    restart: always
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/dd_db
+      - PORT=8080
+    depends_on:
+      - mongodb
+    networks:
+      - mean-network
 
   frontend:
     image: sushantsavilake/mean-frontend
     container_name: frontend
-    ports:
-      - "4200:4200"
-    networks:
-      - mean-network
+    restart: always
     depends_on:
       - backend
-    restart: always
+    networks:
+      - mean-network
 
 networks:
   mean-network:
     driver: bridge
+
+volumes:
+  mongo-data:
