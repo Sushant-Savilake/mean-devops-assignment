@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tutorial } from '../models/tutorial.model';
 
-private baseUrl = '/api/tutorials';
-
 @Injectable({
   providedIn: 'root'
 })
 export class TutorialService {
+
+  private baseUrl = '/api/tutorials';
 
   constructor(private http: HttpClient) { }
 
